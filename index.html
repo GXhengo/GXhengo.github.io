@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RTOS Patient Monitor Project</title>
+
+<!-- Clean styling for easy reading -->
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: auto;
+        padding: 30px;
+        background: #fafafa;
+        line-height: 1.6;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    h2 {
+        margin-top: 35px;
+    }
+    .video-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 18px 0;
+    }
+    iframe {
+        border-radius: 6px;
+    }
+    .code {
+        background:#eee; padding:10px; border-radius:6px; font-size:14px;
+        overflow-x:auto; white-space:pre-wrap;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Real-Time Embedded Patient Monitor</h1>
+<p style="text-align:center;">Built on ESP32 • FreeRTOS • Hard-real-time alarm path</p>
+
+<hr>
+
+<h2>Project Overview</h2>
+<p>
+This project is a real-time monitoring prototype designed to simulate a hospital ICU vital
+signs system. The ESP32 reads an analog "vital" signal, detects threshold crossings, and 
+triggers an alarm path under strict timing requirements. Hard tasks guarantee fast response 
+to critical levels, while soft tasks handle background UI tasks such as heartbeat LED output 
+and nurse-button interaction.
+</p>
+
+<h3>Key Features</h3>
+<ul>
+    <li>ESP32 with FreeRTOS multithreading</li>
+    <li>Two LEDs (status + alarm)</li>
+    <li>Analog sensor threshold detection</li>
+    <li>Hardware button ISR + debounced nurse alert task</li>
+    <li>Queue-based data passing between tasks</li>
+    <li>Mutex-controlled UART output to prevent race conditions</li>
+    <li>Recorded timing proof demonstrating deadline success</li>
+</ul>
+
+<h2>Company Scenario</h2>
+<p>
+The system is modeled as a VitalCare ICU patient monitor. 
+Hard deadlines simulate medically critical timing (50 ms alarm response, 100 ms sampling).
+Soft tasks provide system feedback without threatening patient safety.
+</p>
+
+<h2>YouTube Demo (to be added)</h2>
+<div class="video-container">
+    <!-- DROP YOUR VIDEO LINK HERE WHEN READY -->
+    <!-- Example format -->
+    <!-- <iframe width="640" height="360" src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe> -->
+    <p><i>Video coming soon — recording in progress.</i></p>
+</div>
+
+<h2>Screenshot</h2>
+<p>You may insert a picture of your Wokwi layout, wiring diagram, or serial log here.</p>
+<img src="YOUR_IMAGE.png" width="500px">
+
+<h2>Source Code Reference</h2>
+<p>
+Full code available in <b>/src</b> or <b>main.c</b> within this repository.  
+</p>
+
+<div class="code">
+Example components used in this project:<br>
+- Queue: q_sensor  
+- Semaphores: sem_sensor, sem_button, sem_button_isr  
+- Mutex: print_mutex  
+- Hard Tasks: patient_monitoring, health_event  
+- Soft Tasks: heartbeat_task, nurse_alert, button_isr_task  
+</div>
+
+<hr>
+<p style="text-align:center;font-size:14px;">
+Last updated: <span id="date"></span>
+</p>
+
+<script>
+document.getElementById("date").textContent = new Date().toLocaleDateString();
+</script>
+
+</body>
+</html>
