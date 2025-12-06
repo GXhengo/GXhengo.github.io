@@ -24,10 +24,11 @@
         width: 100%;
         display: flex;
         justify-content: center;
-        margin: 18px 0;
+        margin: 25px 0;
     }
     iframe {
         border-radius: 6px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.15);
     }
 </style>
 </head>
@@ -45,7 +46,7 @@ This project simulates a real-time healthcare monitor designed to track and reac
 to patient vital readings. The system reads an analog health signal, detects threshold
 exceedances, and triggers alarms within strict timing requirements. Real-time scheduling
 ensures that life-critical events are processed under deadline, while non-critical UI tasks
-run in the background without interference.
+run silently in the background without affecting response time.
 </p>
 
 <h3>Key Features</h3>
@@ -56,23 +57,24 @@ run in the background without interference.
     <li>Nurse call button with ISR and software debounce</li>
     <li>Queue-based sensor event transfer</li>
     <li>Mutex-protected console output for race-free logging</li>
-    <li>Hard deadlines verified using serial timing prints</li>
+    <li>Hard real-time deadlines measured and proven</li>
 </ul>
 
 <h2>Company Scenario</h2>
 <p>
-This is a patient monitoring system for use in healthcare technology.  
-The design models an early-stage ICU bedside monitor, where fast responses to changing
-vital signs are critical, and missed deadlines may indicate real patient risk. Hard tasks
-handle sensor detection and alarm activation, while soft tasks manage user interaction
-and device feedback without impacting safety.
+This is a patient monitoring system for use in healthcare technology.
+The design models an early-stage ICU bedside monitor, where fast reaction to changing
+vital signs is essential and missed deadlines may signal real patient risk. Hard tasks 
+are responsible for vital sampling and alarm execution, while soft tasks handle nurse input
+and device feedback. This separation keeps the system responsive even under heavy load.
 </p>
 
 <h2>Demo Video</h2>
 <div class="video-container">
-    <!-- Add your video when ready -->
-    <!-- <iframe width="640" height="360" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe> -->
-    <p><i>Video upload coming soon...</i></p>
+    <iframe width="700" height="393" 
+    src="https://www.youtube.com/embed/LTwWNRPWBr8" 
+    title="Project Video Demo" 
+    frameborder="0" allowfullscreen></iframe>
 </div>
 
 <hr>
