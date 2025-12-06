@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>RTOS Patient Monitor Project</title>
+<title>RTOS Patient Monitoring System</title>
 
-<!-- Clean styling for easy reading -->
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -30,74 +29,54 @@
     iframe {
         border-radius: 6px;
     }
-    .code {
-        background:#eee; padding:10px; border-radius:6px; font-size:14px;
-        overflow-x:auto; white-space:pre-wrap;
-    }
 </style>
 </head>
 
 <body>
 
-<h1>Real-Time Embedded Patient Monitor</h1>
-<p style="text-align:center;">Built on ESP32 • FreeRTOS • Hard-real-time alarm path</p>
+<h1>Real-Time Embedded Patient Monitoring System</h1>
+<p style="text-align:center;">ESP32 • FreeRTOS • Hard-Deadline Medical Monitoring</p>
 
 <hr>
 
 <h2>Project Overview</h2>
 <p>
-This project is a real-time monitoring prototype designed to simulate a hospital ICU vital
-signs system. The ESP32 reads an analog "vital" signal, detects threshold crossings, and 
-triggers an alarm path under strict timing requirements. Hard tasks guarantee fast response 
-to critical levels, while soft tasks handle background UI tasks such as heartbeat LED output 
-and nurse-button interaction.
+This project simulates a real-time healthcare monitor designed to track and react
+to patient vital readings. The system reads an analog health signal, detects threshold
+exceedances, and triggers alarms within strict timing requirements. Real-time scheduling
+ensures that life-critical events are processed under deadline, while non-critical UI tasks
+run in the background without interference.
 </p>
 
 <h3>Key Features</h3>
 <ul>
-    <li>ESP32 with FreeRTOS multithreading</li>
-    <li>Two LEDs (status + alarm)</li>
-    <li>Analog sensor threshold detection</li>
-    <li>Hardware button ISR + debounced nurse alert task</li>
-    <li>Queue-based data passing between tasks</li>
-    <li>Mutex-controlled UART output to prevent race conditions</li>
-    <li>Recorded timing proof demonstrating deadline success</li>
+    <li>ESP32 running FreeRTOS</li>
+    <li>Two LEDs (heartbeat + alarm)</li>
+    <li>Variable-time alarm processing</li>
+    <li>Nurse call button with ISR and software debounce</li>
+    <li>Queue-based sensor event transfer</li>
+    <li>Mutex-protected console output for race-free logging</li>
+    <li>Hard deadlines verified using serial timing prints</li>
 </ul>
 
 <h2>Company Scenario</h2>
 <p>
-The system is modeled as a VitalCare ICU patient monitor. 
-Hard deadlines simulate medically critical timing (50 ms alarm response, 100 ms sampling).
-Soft tasks provide system feedback without threatening patient safety.
+This is a patient monitoring system for use in healthcare technology.  
+The design models an early-stage ICU bedside monitor, where fast responses to changing
+vital signs are critical, and missed deadlines may indicate real patient risk. Hard tasks
+handle sensor detection and alarm activation, while soft tasks manage user interaction
+and device feedback without impacting safety.
 </p>
 
-<h2>YouTube Demo (to be added)</h2>
+<h2>Demo Video</h2>
 <div class="video-container">
-    <!-- DROP YOUR VIDEO LINK HERE WHEN READY -->
-    <!-- Example format -->
-    <!-- <iframe width="640" height="360" src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe> -->
-    <p><i>Video coming soon — recording in progress.</i></p>
-</div>
-
-<h2>Screenshot</h2>
-<p>You may insert a picture of your Wokwi layout, wiring diagram, or serial log here.</p>
-<img src="YOUR_IMAGE.png" width="500px">
-
-<h2>Source Code Reference</h2>
-<p>
-Full code available in <b>/src</b> or <b>main.c</b> within this repository.  
-</p>
-
-<div class="code">
-Example components used in this project:<br>
-- Queue: q_sensor  
-- Semaphores: sem_sensor, sem_button, sem_button_isr  
-- Mutex: print_mutex  
-- Hard Tasks: patient_monitoring, health_event  
-- Soft Tasks: heartbeat_task, nurse_alert, button_isr_task  
+    <!-- Add your video when ready -->
+    <!-- <iframe width="640" height="360" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe> -->
+    <p><i>Video upload coming soon...</i></p>
 </div>
 
 <hr>
+
 <p style="text-align:center;font-size:14px;">
 Last updated: <span id="date"></span>
 </p>
